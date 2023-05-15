@@ -12,85 +12,107 @@
 </head>
 
 <body>
-<div class="container-fluid">
+    <div class="container">
 
-<?php
-session_start();
-if (isset($_POST['userLogin'])) {
-    header('Location: login.php');
-    exit;
-} else {
-    include "Menu.php";
-    include '../controlador/fichas.php';
-    $index = new index;
+        <?php
+        session_start();
+        if (isset($_POST['userLogin'])) {
+            header('Location: login.php');
+            exit;
+        } else {
+            include "Menu.php";
+            include '../controlador/fichas.php';
+            $index = new index;
 
-    if (!empty($trimestre = $_GET['trimestre'])) {
-        $resultado = $index->consulta($trimestre);
-       
-    } 
- 
-    
-    
-
-?><br>
-    <div class="centrado">
-        
-        
-        <div class="row">
-            <?php while ($trimestre = mysqli_fetch_array($resultado) )  : ?>
+            if (isset($_GET['trimestre'])) {
+                $trimestre = $_GET['trimestre'];
+                $resultado = $index->consulta($trimestre);
                 
-                <div class="col-md-4">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><strong>codigo de ficha:</strong></td>
-                                <td><?php echo $trimestre["id"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Nombre de ficha:</strong></td>
-                                <td><?php echo $trimestre["nombre"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>hora de inicio:</strong></td>
-                                <td><?php echo $trimestre["hora_inicio"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>hora de salida:</strong></td>
-                                <td><?php echo $trimestre["hora_final"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>centro:</strong></td>
-                                <td><?php echo $trimestre["id_centro"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>documento:</strong></td>
-                                <td><?php echo $trimestre["documento"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>lider de ficha:</strong></td>
-                                <td><?php echo $trimestre["lider_ficha"]; ?></td>
-                            </tr>
-                            <tr>
-                            <td><strong>id:</strong></td>
-                                <td><?php echo $trimestre["id_ficha"]; ?></td>
-                            </tr>
-                            <tr>
-                            <td><strong>trimestre</strong></td>
-                                <td><?php echo $trimestre["trimestre"]; ?></td>
-                            </tr>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                </div>
-            <?php endwhile; ?>
-        </div>
-    </div>
+                if (empty($resultado)) {
+                    echo "<div class='alert alert-danger alert-dismissible'>";
+                    echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+                    echo "  <strong>Error!</strong> No se encontraron Registros";
+                    echo "</div>";
+                }
+    
+            } 
+            
+            
+        ?><br>
+            <div class="fichas">
+                <div class="row">
+                    <?php while ($trimestre = mysqli_fetch_array($resultado)) : ?>
 
-<?php
-}
-?>
-</div>
+                        <div class="col-md-4">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>codigo de ficha:</strong></td>
+                                        <td><?php echo $trimestre["id"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Nombre de ficha:</strong></td>
+                                        <td><?php echo $trimestre["nombre"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>hora de inicio:</strong></td>
+                                        <td><?php echo $trimestre["hora_inicio"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>hora de salida:</strong></td>
+                                        <td><?php echo $trimestre["hora_final"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>centro:</strong></td>
+                                        <td><?php echo $trimestre["id_centro"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>documento:</strong></td>
+                                        <td><?php echo $trimestre["documento"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>lider de ficha:</strong></td>
+                                        <td><?php echo $trimestre["lider_ficha"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>trimestre</strong></td>
+                                        <td><?php echo $trimestre["trimestre"]; ?></td>
+                                    </tr>
+                                    </tr>
+                                    <td><strong>municipio:</strong></td>
+                                    <td><?php echo $trimestre["nombre_municipio"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ambiente:</strong></td>
+                                        <td><?php echo $trimestre["nombre_ambiente"]; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ver horario :</strong></td>
+                                        <td><?php echo "<a href='horario.php?id=" . $trimestre['id'] . "' ><svg style='color:blue'  xmlns='http://www.w3.org/2000/svg' width='30' height='20' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				                        <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				                        </svg></a>"; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>actualizar horario :</strong></td>
+                                        <td><?php echo "<a href='updateficha.php?id=" . $trimestre['id'] . "' ><svg style='color:blue' xmlns='http://www.w3.org/2000/svg'  width='30' height='40' fill='currentColor' class='bi bi-box-arrow-in-right' viewBox='0 0 16 16'>
+                                        <path fill-rule='evenodd' d='M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z'/>
+                                        <path fill-rule='evenodd' d='M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z'/>
+                                        </svg></a>"; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
+
+        <?php
+        
+        }
+        
+        ?>
+    </div>
     <script type="text/javascript" src='js/jquery.min.js'></script>
     <script type="text/javascript" src='js/bootstrap.min.js'></script>
     <script type="text/javascript">

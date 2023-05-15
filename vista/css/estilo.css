@@ -1,3 +1,71 @@
+.centrado{
+  margin-left: 35% ;
+  width: 100%;
+}
+
+.session{
+  margin-left: 5% ;
+}
+
+.col-md-4{
+  margin-top: 1%;
+  
+}
+
+.table-wrapper {
+  text-align: center;
+  margin-left: 35%;
+  margin-top: 1%;
+  width: 100%;
+}
+
+.form-group {
+  
+  width: 100%;
+}
+
+.insert{
+  margin-left: 35% ;
+  width: 100%;
+}
+
+
+
+.users-form input {
+    margin-top: 5%;
+}
+
+.users-form select {
+    display: block;
+  
+}
+
+.table-wrapper .btn {
+  float: right;
+  color: #333;
+    background-color: #fff;
+  border-radius: 3px;
+  border: none;
+  outline: none !important;
+  margin-left: 10px;
+  margin-top: 5%;
+}
+.table-wrapper .btn:hover {
+      color: #333;
+  background: #f2f2f2;
+  margin-top: 5%;
+}
+.table-wrapper .btn.btn-primary {
+  color: #fff;
+  background: #03A9F4;
+}
+.table-wrapper .btn.btn-primary:hover {
+  background: #03a3e7;
+}
+
 .table {
+   
+    text-align: center;
     border: 3px solid black;
   }
+

@@ -34,66 +34,92 @@
                 $documento = $_POST['documento'];
                 $lider_ficha = $_POST['lider_ficha'];
                 $id_trimestre = $_POST['id_trimestre'];
+                $id_municipio = $_POST['id_municipio'];
+                $id_ambiente = $_POST['id_ambiente'];
 
                 if ($accion == "Agregar") {
-                    $insertardatos = $ficha->consultarficha($id, $nombre, $hora_inicio,$hora_final,$id_centro, $documento, $lider_ficha, $id_trimestre);
+                    $insertardatos = $ficha->consultarficha($id, $nombre, $hora_inicio, $hora_final, $id_centro, $documento, $lider_ficha, $id_trimestre, $id_municipio, $id_ambiente);
                 }
             }
 
         ?>
-            <!-- <div class="users-form"> -->
-            <h1> Crear ficha</h1>
-            <form action="insert-ficha.php" method="POST">
-            <div class="form-group col-md-4">
-                    <label>centro</label>
-                    <option value="">Seleccione:</option>
-                    <select class="form-control" name="id_trimestre" for="id_trimestre" required>
-                        <option value="1">trimestre1</option>
-                        <option value="2">trimestre2</option>
-                        <option value="3">trimestre3</option>
-                </div>
-                <br>
+            <div class="users-form">
+           
+            <form action="insert-ficha.php" method="POST" class="insert">
+            <h1 > Crear ficha</h1>
                 <div class="form-group col-md-4">
                     <label>ficha </label>
-                    <input type="text" name="id" for="id"  placeholder="ficha" class="form-control" required>
+                    <input type="text" name="id" for="id" placeholder="ficha" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>nombre </label>
-                    <input type="text" name="nombre"  for="nombre" placeholder="nombre" class="form-control" required>
+                    <input type="text" name="nombre" for="nombre" placeholder="nombre" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>hora de inicio </label>
-                    <input type="time" name="hora_inicio" for="hora_inicio"  placeholder="hora de inicio" class="form-control" required>
+                    <input type="time" name="hora_inicio" for="hora_inicio" placeholder="hora de inicio" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>hora de salida </label>
-                    <input type="time" name="hora_final	"  for="hora_final	" placeholder="hora de salida	" class="form-control" required>
+                    <input type="time" name="hora_final" for="hora_final" placeholder="hora de salida" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>documento </label>
-                    <input type="text" name="documento"  for="documento" placeholder="documento" class="form-control" required>
+                    <input type="text" name="documento" for="documento" placeholder="documento" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>lider de ficha </label>
-                    <input type="text" name="lider_ficha"  for="lider_ficha" placeholder="lider de ficha" class="form-control" required>
+                    <input type="text" name="lider_ficha" for="lider_ficha" placeholder="lider de ficha" class="form-control" required>
                 </div>
-                <br>
+                
                 <div class="form-group col-md-4">
                     <label>centro</label>
                     <select class="form-control" name="id_centro" for="id_centro" required>
-                    <option value="">Seleccione:</option>
+                        <option value="">Seleccione:</option>
                         <option value="casona">casona</option>
                         <option value="samaria">samaria</option>
+                    </select>
                 </div>
-                <br>
+                
+                <div class="form-group col-md-4">
+                    <label>trimestre</label>
+                    <select class="form-control" name="id_trimestre" for="id_trimestre" required>
+                    <option value="">Seleccione:</option>
+                        <option value="1">trimestre1</option>
+                        <option value="2">trimestre2</option>
+                        <option value="3">trimestre3</option>
+                        <option value="4">trimestre4</option>
+                    </select>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label>ambiente</label>
+                    <select class="form-control" name="id_ambiente" for="id_ambiente" required>
+                        <option value="">Seleccione:</option>
+                        <option value="1">tic</option>
+                        <option value="2">toc</option>
+                        <!-- <option value="2">trimestre2</option>
+                        <option value="3">trimestre3</option> -->
+                        </select>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label>municipio</label>
+                    <select class="form-control" name="id_municipio" for="id_municipio" required>
+                        <option value="">Seleccione:</option>
+                        <option value="1">santander</option>
+                        <!-- <option value="2">trimestre2</option>
+                        <option value="3">trimestre3</option> -->
+                        </select>
+                </div>
                 
                 
-             
+                
                 <div class="form-group col-md-2">
                     <input type="submit" name="boton" value="Agregar" class="btn btn-primary">
                 </div>

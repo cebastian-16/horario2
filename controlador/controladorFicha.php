@@ -15,57 +15,71 @@ class ficha
 		$consultarficha = "SELECT * FROM `ficha` WHERE id = '$id'";
 		$resultadoficha = mysqli_query($this->conn, $consultarficha);
 		return $resultadoficha;
-	} 
+	}
 
-	public function consultarTipo(){
+	public function consultarTipo()
+	{
 		$consultaTipo = "SELECT * FROM centros";
-		$resultadoTipo = mysqli_query( $this->conn, $consultaTipo );
+		$resultadoTipo = mysqli_query($this->conn, $consultaTipo);
 		return $resultadoTipo;
 	}
-	public function consultarTipo2(){
+	public function consultarTipo2()
+	{
 		$consultaTipo = "SELECT * FROM trimestres";
-		$resultadoTipo = mysqli_query( $this->conn, $consultaTipo );
+		$resultadoTipo = mysqli_query($this->conn, $consultaTipo);
+		return $resultadoTipo;
+	}
+	public function consultarTipo3()
+	{
+		$consultaTipo = "SELECT * FROM municipio";
+		$resultadoTipo = mysqli_query($this->conn, $consultaTipo);
+		return $resultadoTipo;
+	}
+	public function consultarTipo4()
+	{
+		$consultaTipo = "SELECT * FROM ambiente";
+		$resultadoTipo = mysqli_query($this->conn, $consultaTipo);
 		return $resultadoTipo;
 	}
 
 
 
-	public function consultarficha($id, $nombre,$hora_inicio,$hora_final,$id_centro, $documento, $lider_ficha,$id_trimestre)
+	public function consultarficha($id, $nombre, $hora_inicio, $hora_final, $id_centro, $documento, $lider_ficha, $id_trimestre, $id_municipio, $id_ambiente)
 	{
-		$consultarficha = "INSERT INTO `ficha` (`id`, `nombre`, `hora_inicio`, `hora_final`, `id_centro`, `documento`, `lider_ficha`, `id_trimestre`)
-		VALUES ('$id', '$nombre','$hora_inicio','$hora_final','$id_centro',' $documento', '$lider_ficha','$id_trimestre')";
+		$consultarficha = "INSERT INTO ficha (id, nombre, hora_inicio, hora_final, id_centro, documento, lider_ficha, id_trimestre, id_municipio, id_ambiente) VALUES ('$id', '$nombre', '$hora_inicio', '$hora_final', '$id_centro', '$documento', '$lider_ficha', '$id_trimestre', '$id_municipio', '$id_ambiente')";
 		$resultadoficha = mysqli_query($this->conn, $consultarficha);
-		if ($resultadoficha==TRUE){
-	
-		echo "<div class='alert alert-success alert-dismissible'>";
-		echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-		echo "  <strong>Excelente!</strong> Se ingreso Articulo " . $id . " correctamente.";
-		echo "</div>";
-	}else{
-		echo "<div class='alert alert-danger alert-dismissible'>";
-		
-		echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-		echo "  <strong>Error!</strong> ".mysqli_error($this->conn);
-		echo "</div>";
-	  }
-	} 
 
-	public function actualizarficha($id, $nombre, $hora_inicio,$hora_final,$id_centro, $documento, $lider_ficha)
+		if ($resultadoficha == TRUE) {
+
+			echo "<div class='alert alert-success alert-dismissible'>";
+			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+			echo "  <strong>Excelente!</strong> Se ingreso Articulo " . $id . " correctamente.";
+			echo "	<a href='insert-horario.php?activo=" . $id . "'><input type='button' class='btn btn-primary' value='insertar horario'></a> ";
+			echo "</div>";
+		} else {
+			echo "<div class='alert alert-danger alert-dismissible'>";
+
+			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+			echo "  <strong>Error!</strong> " . mysqli_error($this->conn);
+			echo "</div>";
+		}
+	}
+
+	public function actualizarficha($id, $hora_inicio, $hora_final, $documento, $lider_ficha, $id_trimestre)
 	{
-		$modificarficha = "UPDATE `ficha` SET `id`='$id',`nombre`='$nombre',`hora_inicio`='$hora_inicio',`hora_final`='$hora_final',`id_centro`='$id_centro',`documento`='$documento',`lider_ficha`='$lider_ficha' WHERE id = '$id'";
+		$modificarficha = "UPDATE `ficha` SET `hora_inicio`='$hora_inicio',`hora_final`='$hora_final',`documento`='$documento',`lider_ficha`='$lider_ficha', id_trimestre ='$id_trimestre ' WHERE id = '$id'";
 		$resultadoficha = mysqli_query($this->conn, $modificarficha);
-		if ($resultadoficha==TRUE){
-	
-		echo "<div class='alert alert-success alert-dismissible'>";
-		echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-		echo "  <strong>Excelente!</strong> Se actualizo la ficha bien " . $id . " correctamente.";
-		echo "</div>";
-	}else{
-		echo "<div class='alert alert-danger alert-dismissible'>";
-		
-		echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-		echo "  <strong>Error!</strong> ".mysqli_error($this->conn);
-		echo "</div>";
-	  }
-	} 
+		if ($resultadoficha == TRUE) {
+
+			echo "<div class='alert alert-success alert-dismissible'>";
+			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+			echo "  <strong>Excelente!</strong> Se actualizo la ficha bien " . $id . " correctamente.";
+			echo "</div>";
+		} else {
+			echo "<div class='alert alert-danger alert-dismissible'>";
+			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+			echo "  <strong>Error!</strong> " . mysqli_error($this->conn);
+			echo "</div>";
+		}
+	}
 }

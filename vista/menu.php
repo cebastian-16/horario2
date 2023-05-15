@@ -19,6 +19,13 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
+      <div class="session">
+        <a href="cerrar_session.php">
+          <span class="hola">CERAR</span>
+        </a>
+      </div>
+    </div>
     </div>
   </div>
 </nav>

@@ -31,6 +31,10 @@
             //if (password_verify($password, $result['password'])) { ---revisar
             if ($contraseña == $result['contraseña']) {
                 $_SESSION['userLogin'] = $result['usuario'];
+                $_SESSION['sedeStock'] = $result['usuario'];
+                $_SESSION["rolLogin"] = $result['usuario'];
+                $_SESSION['cargoLogin'] = $result['usuario'];
+                $_SESSION['procesoLogin'] = $result['usuario'];
                 echo "<div class='alert alert-success alert-dismissible'>";
                 echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
                 echo "  <strong>Excelente!</strong> Datos correctos.";
