@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>insertar horario</title>
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
-    <link href="css/estilo.css" rel="stylesheet">
-    <script type="text/javascript" src="js/scriptDatos.js"></script>
-    <title>Ingresar Caracteristicas</title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script type="text/javascript" src="js/scripRegArt.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
@@ -46,7 +46,7 @@
             if (!empty($_GET['activo'])) {
 
         ?>
-                <div class="users-form">
+                <div class="holas">
                 <h1> Crear Horario de la ficha</h1>
                 <form action="insert-horario.php" method="POST">
                     <div class="form-group col-md-4">

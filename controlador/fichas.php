@@ -21,5 +21,18 @@
 			
 		}
 
+		public function eliminar($id){
+			$id = $_GET['id'];
+			$eliminar = "DELETE FROM `ficha` WHERE  id='$id'";
+			$resultado = mysqli_query($this->conn, $eliminar);
+			
+			if($resultado == true ){
+				echo "<script> alert('El formulario se elimino correctamente'); location.href='index.php'; </script>";
+			}else{
+				echo "<script> alert('El formulario no elimino correctamente :( '); location.href='index.php'; </script>";
+			}
+
+			
+		}
 	}
  ?>

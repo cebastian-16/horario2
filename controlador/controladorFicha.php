@@ -45,7 +45,23 @@ class ficha
 
 
 	public function consultarficha($id, $nombre, $hora_inicio, $hora_final, $id_centro, $documento, $lider_ficha, $id_trimestre, $id_municipio, $id_ambiente)
-	{
+	{	// Verificar si ya existe una ficha con el mismo número de identificación
+		$consultaExistencia = "SELECT COUNT(*) as total FROM ficha WHERE id='$id'";
+		$resultadoExistencia = mysqli_query($this->conn, $consultaExistencia);
+
+		if ($resultadoExistencia) {
+			$filaExistencia = mysqli_fetch_assoc($resultadoExistencia);
+			$totalExistencia = $filaExistencia['total'];
+
+			if ($totalExistencia > 0) {
+				echo "<div class='alert alert-danger alert-dismissible'>";
+				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+				echo "  <strong>Excelente!</strong> ya existe el numero de ficha:" . $id . " ";
+				echo "</div>";
+				return; // Detener la ejecución de la función si ya existe una ficha con el mismo número de identificación
+			}
+		}
+
 		$consultarficha = "INSERT INTO ficha (id, nombre, hora_inicio, hora_final, id_centro, documento, lider_ficha, id_trimestre, id_municipio, id_ambiente) VALUES ('$id', '$nombre', '$hora_inicio', '$hora_final', '$id_centro', '$documento', '$lider_ficha', '$id_trimestre', '$id_municipio', '$id_ambiente')";
 		$resultadoficha = mysqli_query($this->conn, $consultarficha);
 
@@ -58,7 +74,6 @@ class ficha
 			echo "</div>";
 		} else {
 			echo "<div class='alert alert-danger alert-dismissible'>";
-
 			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 			echo "  <strong>Error!</strong> " . mysqli_error($this->conn);
 			echo "</div>";

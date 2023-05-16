@@ -55,51 +55,51 @@
                 }
             ?>
 
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h2>Modificar Ficha</h2>
+                <?php if (!empty($consultaM)) { ?>
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h2>Modificar Ficha</h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php if (!empty($consultaM)) { ?>
                         <div class="row">
                             <form action="updateficha.php" method="post" name="formDatos" class="form">
                                 <div class="form-group col-md-4">
                                     <label>ficha </label>
                                     <input type="text" disabled name="id" for="id" value="<?php echo $consultaM["id"] ?>" placeholder="ficha" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>nombre </label>
                                     <input type="text" disabled name="nombre" value="<?php echo $consultaM["nombre"] ?>" for="nombre" placeholder="nombre" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>hora de inicio </label>
                                     <input type="time" name="hora_inicio" for="hora_inicio" value="<?php echo $consultaM["hora_inicio"] ?>" placeholder="hora_inicio" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>hora de salida </label>
                                     <input type="time" name="hora_final" value="<?php echo $consultaM["hora_final"] ?>" for="hora_final" placeholder="" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>documento </label>
                                     <input type="text" name="documento" value="<?php echo $consultaM["documento"] ?>" for="documento" placeholder="documento" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>lider de ficha </label>
                                     <input type="text" name="lider_ficha" value="<?php echo $consultaM["lider_ficha"] ?>" for="lider_ficha" placeholder="lider de ficha" class="form-control" required>
                                 </div>
-                                <br>
+
                                 <div class="form-group col-md-4">
                                     <label>centro</label>
                                     <select class="form-control" name="id_trimestre" for="id_trimestre" required>
-                                    <option value="<?php echo $consultaM["id_trimestre"] ?>">Seleccione:</option>
+                                        <option value="<?php echo $consultaM["id_trimestre"] ?>">Seleccione:</option>
                                         <option value="1">trimestre1</option>
                                         <option value="2">trimestre2</option>
                                         <option value="3">trimestre3</option>
@@ -113,13 +113,14 @@
                                     <?php echo "<a href='updatehorario.php?id=" . $consultaM["id"] . "'><input type='button' class='btn btn-primary' value='Modificar horario'></a> " ?>
                                 </div>
 
+
                             </form>
                         </div>
                 <?php
-                    }
                 }
+            }
                 ?>
-                </div>
+                    </div>
         </div>
     </div>
     <script type="text/javascript" src='js/jquery.min.js'></script>

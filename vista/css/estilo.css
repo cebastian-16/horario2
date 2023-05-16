@@ -1,6 +1,18 @@
+
 .centrado{
-  margin-left: 35% ;
-  width: 100%;
+  margin-left: 550px  !important;
+  justify-content: center;
+  font-size: 100%;
+  justify-items: center;
+ 
+}
+
+.holas{
+
+    margin-left: 550px  !important;
+    justify-content: center;
+    font-size: 100%;
+    justify-items: center; 
 }
 
 .session{
@@ -9,41 +21,33 @@
 
 .col-md-4{
   margin-top: 1%;
-  
+
 }
 
 .table-wrapper {
   text-align: center;
-  margin-left: 35%;
+  justify-content: center;
+  margin-left: 350px  !important;
   margin-top: 1%;
-  width: 100%;
+  width: 90%;
+
+  font-size: 100%;
 }
 
-.form-group {
-  
-  width: 100%;
-}
 
 .insert{
-  margin-left: 35% ;
-  width: 100%;
+  margin-left: 550px  !important;
+  justify-content: center;
+  width: 60%;
+  justify-items: center; 
 }
 
 
-
-.users-form input {
-    margin-top: 5%;
-}
-
-.users-form select {
-    display: block;
-  
-}
 
 .table-wrapper .btn {
   float: right;
   color: #333;
-    background-color: #fff;
+  background-color: #fff;
   border-radius: 3px;
   border: none;
   outline: none !important;
@@ -51,13 +55,14 @@
   margin-top: 5%;
 }
 .table-wrapper .btn:hover {
-      color: #333;
+  color: #333;
   background: #f2f2f2;
   margin-top: 5%;
 }
 .table-wrapper .btn.btn-primary {
   color: #fff;
   background: #03A9F4;
+  
 }
 .table-wrapper .btn.btn-primary:hover {
   background: #03a3e7;

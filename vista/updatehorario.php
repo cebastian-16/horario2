@@ -56,16 +56,16 @@
             }
         ?>
 
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h2>Modificar Horario</h2> 
+            <?php if (!empty($consultaM)) { ?>
+
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h2>Modificar Horario</h2>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                <?php if (!empty($consultaM)) { ?>
                     <div class="row">
                         <form action="updatehorario.php" method="post" name="formDatos">
                             <div class="form-group col-md-4">
@@ -73,42 +73,42 @@
                                 <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["id_ficha"] . "' name='id_ficha' type='text'>" ?>
                                 <?php echo "<input class='form-control' disabled value='" . $consultaM["id_ficha"] . "' type='text'>" ?>
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>lunes </label>
                                 <input type="text" name="lunes" value="<?php echo $consultaM["lunes"] ?>" for="lunes" placeholder="lunes" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>martes </label>
                                 <input type="text" name="martes" value="<?php echo $consultaM["martes"] ?>" for="martes" placeholder="martes" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>miercoles </label>
                                 <input type="text" name="miercoles" value="<?php echo $consultaM["miercoles"] ?>" for="miercoles" placeholder="mierecoles" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>jueves </label>
                                 <input type="text" name="jueves" value="<?php echo $consultaM["jueves"] ?>" for="jueves" placeholder="jueves" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>viernes </label>
                                 <input type="text" name="viernes" value="<?php echo $consultaM["viernes"] ?>" for="viernes" placeholder="viernes" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>sabados </label>
                                 <input type="text" name="sabado" value="<?php echo $consultaM["sabado"] ?>" for="sabado" placeholder="sabado" class="form-control">
                             </div>
-                          
+
                             <div class="form-group col-md-4">
                                 <label>domingos </label>
                                 <input type="text" name="domingo" value="<?php echo $consultaM["domingo"] ?>" for="domingo" placeholder="domingo" class="form-control">
                             </div>
-                          
+
 
                             <div class="form-group col-md-1">
                                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="form-group col-md-1">
-                                <?php echo "<a href='index.php'><input type='button' class='btn btn-primary' value='volver'></a> " ?>
+                                <?php echo "<a href='index.php'><input type='submit' class='btn btn-primary' value='volver'></a> " ?>
                             </div>
 
                         </form>
@@ -125,10 +125,10 @@
                     </div>
 
             <?php
-                }
             }
+        }
             ?>
-            </div>
+                </div>
     </div>
 
     <script type="text/javascript" src='js/jquery.min.js'></script>
