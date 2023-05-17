@@ -82,16 +82,15 @@ class ficha
 
 	public function actualizarficha($id, $hora_inicio, $hora_final, $documento, $lider_ficha, $id_trimestre)
 	{
-		$modificarficha = "UPDATE `ficha` SET `hora_inicio`='$hora_inicio',`hora_final`='$hora_final',`documento`='$documento',`lider_ficha`='$lider_ficha', id_trimestre ='$id_trimestre ' WHERE id = '$id'";
+		$modificarficha = "UPDATE `ficha` SET `hora_inicio`='$hora_inicio',`hora_final`='$hora_final',`documento`='$documento',`lider_ficha`='$lider_ficha', `id_trimestre`='$id_trimestre' WHERE id = '$id'";
 		$resultadoficha = mysqli_query($this->conn, $modificarficha);
 		if ($resultadoficha == TRUE) {
-
-			echo "<div class='alert alert-success alert-dismissible'>";
+			echo "<div alert  class='alert alert-primary d-flex align-items-center' role='alert'>";
 			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 			echo "  <strong>Excelente!</strong> Se actualizo la ficha bien " . $id . " correctamente.";
 			echo "</div>";
 		} else {
-			echo "<div class='alert alert-danger alert-dismissible'>";
+			echo "<div  class='alert alert-danger d-flex align-items-center' role='alert'>";
 			echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 			echo "  <strong>Error!</strong> " . mysqli_error($this->conn);
 			echo "</div>";

@@ -62,7 +62,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-4">
-                                <h2>Modificar Horario</h2>
+                                <h2>Modificar Horario</h2>    
                             </div>
                         </div>
                     </div>
@@ -109,15 +109,12 @@
                                 <input type="text" name="domingo" value="<?php echo $consultaM["domingo"] ?>" for="domingo" placeholder="domingo" class="form-control">
                             </div>
 
-
                             <div class="form-group col-md-1">
                                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
 
                             </div>
 
-                            <div class="form-group col-md-1">
-                                <?php echo "<a href='index.php'><input type='submit' class='btn btn-primary' value='volver'></a> " ?>
-                            </div>
+                           
 
                         </form>
 

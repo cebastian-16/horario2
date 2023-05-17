@@ -1,25 +1,22 @@
-
-.centrado{
-  margin-left: 550px  !important;
+.centrado {
+  margin-left: 550px !important;
   justify-content: center;
   font-size: 100%;
   justify-items: center;
- 
 }
 
-.holas{
-
-    margin-left: 550px  !important;
-    justify-content: center;
-    font-size: 100%;
-    justify-items: center; 
+.holas {
+  margin-left: 550px !important;
+  justify-content: center;
+  font-size: 100%;
+  justify-items: center;
 }
 
-.session{
-  margin-left: 5% ;
+.session {
+  margin-left: 5%;
 }
 
-.col-md-4{
+.col-md-4 {
   margin-top: 1%;
 
 }
@@ -27,24 +24,21 @@
 .table-wrapper {
   text-align: center;
   justify-content: center;
-  margin-left: 350px  !important;
+  margin-left: 550px !important;
   margin-top: 1%;
-  width: 90%;
-
   font-size: 100%;
 }
 
 
-.insert{
-  margin-left: 550px  !important;
+.insert {
+  margin-left: 550px !important;
   justify-content: center;
   width: 60%;
-  justify-items: center; 
+  justify-items: center;
 }
 
 
-
-.table-wrapper .btn {
+/* .table-wrapper .btn {
   float: right;
   color: #333;
   background-color: #fff;
@@ -52,25 +46,34 @@
   border: none;
   outline: none !important;
   margin-left: 10px;
+
   margin-top: 5%;
-}
+} */
+
 .table-wrapper .btn:hover {
   color: #333;
   background: #f2f2f2;
   margin-top: 5%;
 }
+
 .table-wrapper .btn.btn-primary {
   color: #fff;
   background: #03A9F4;
-  
+  margin-top: 5%;
 }
+
+.table-wrapper .btn.bt-primary {
+  color: #fff;
+  background: #03A9F4;
+  margin-top: 5%;
+  margin-left: 120px !important;
+}
+
 .table-wrapper .btn.btn-primary:hover {
   background: #03a3e7;
 }
 
 .table {
-   
-    text-align: center;
-    border: 3px solid black;
-  }
-
+  text-align: center;
+  border: 3px solid black;
+}
