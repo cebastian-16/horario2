@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container">
+   
         <?php
         session_start();
 
@@ -20,12 +20,14 @@
             header('Location: login.php');
             exit;
         } else {
-
+            session_destroy();
             include "Menu.php";
             include '../controlador/controladorHorario.php';
             $horario = new horario;
 
-
+            ?>
+            <br>
+            <?php
             if (!empty($_GET['id'])) {
                 $id = $_GET['id'];
                 $resultadohorario = $horario->mirarHorario($id);
@@ -55,65 +57,67 @@
                 }
             }
         ?>
+         <div class="container">
 
             <?php if (!empty($consultaM)) { ?>
 
                 <div class="table-wrapper">
+                <div class="rows">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-4">
-                                <h2>Modificar Horario</h2>    
+                                <h2 class="label3">Modificar Horario</h2>    
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    
                         <form action="updatehorario.php" method="post" name="formDatos">
                             <div class="form-group col-md-4">
-                                <label>ficha </label>
+                                <label class="label3">ficha: </label>
                                 <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["id_ficha"] . "' name='id_ficha' type='text'>" ?>
                                 <?php echo "<input class='form-control' disabled value='" . $consultaM["id_ficha"] . "' type='text'>" ?>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>lunes </label>
+                                <label class="label3">lunes: </label>
                                 <input type="text" name="lunes" value="<?php echo $consultaM["lunes"] ?>" for="lunes" placeholder="lunes" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>martes </label>
+                                <label class="label3">martes: </label>
                                 <input type="text" name="martes" value="<?php echo $consultaM["martes"] ?>" for="martes" placeholder="martes" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>miercoles </label>
+                                <label class="label3">miercoles: </label>
                                 <input type="text" name="miercoles" value="<?php echo $consultaM["miercoles"] ?>" for="miercoles" placeholder="mierecoles" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>jueves </label>
+                                <label class="label3">jueves: </label>
                                 <input type="text" name="jueves" value="<?php echo $consultaM["jueves"] ?>" for="jueves" placeholder="jueves" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>viernes </label>
+                                <label class="label3">viernes: </label>
                                 <input type="text" name="viernes" value="<?php echo $consultaM["viernes"] ?>" for="viernes" placeholder="viernes" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>sabados </label>
+                                <label class="label3">sabados: </label>
                                 <input type="text" name="sabado" value="<?php echo $consultaM["sabado"] ?>" for="sabado" placeholder="sabado" class="form-control">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>domingos </label>
+                                <label class="label3">domingos: </label>
                                 <input type="text" name="domingo" value="<?php echo $consultaM["domingo"] ?>" for="domingo" placeholder="domingo" class="form-control">
                             </div>
 
+                            <div class="label1">
                             <div class="form-group col-md-1">
                                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
-
                             </div>
-
+                            </div>
                            
 
                         </form>

@@ -28,6 +28,7 @@
             echo "  <strong>Error!</strong> Usuario no existe o Contraseña invalida";
             echo "</div>";
         } else {
+            
             //if (password_verify($password, $result['password'])) { ---revisar
             if ($contraseña == $result['contraseña']) {
                 $_SESSION['userLogin'] = $result['usuario'];

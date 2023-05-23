@@ -18,7 +18,6 @@
         } else {
             return false;
         }
-
     }
 
     const toggle = document.getElementById('theme-toggle');
@@ -30,33 +29,30 @@
 </script>
 
 <body>
-    <div class="container">
 
-        <?php
-        session_start();
-        if (isset($_POST['userLogin'])) {
-            header('Location: login.php');
-            exit;
-        } else {
-            include "Menu.php";
-            include '../controlador/fichas.php';
-            $index = new index;
 
-            if (isset($_GET['trimestre'])) {
-                $trimestre = $_GET['trimestre'];
-                $resultado = $index->consulta($trimestre);
-                
-                if (empty($resultado)) {
-                    echo "<div class='alert alert-danger alert-dismissible'>";
-                    echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-                    echo "  <strong>Error!</strong> No se encontraron Registros";
-                    echo "</div>";
-                }
-    
-            } 
-            
-            
-        ?><br>
+    <?php
+    session_start();
+    if (isset($_POST['userLogin'])) {
+        header('Location: login.php');
+        exit;
+    } else {
+        session_destroy();
+        include "Menu.php";
+        include '../controlador/fichas.php';
+        $index = new index;
+
+
+        if (!empty($_GET['trimestre'])) {
+            $trimestre = $_GET['trimestre'];
+            $resultado = $index->consulta($trimestre);
+        }
+
+
+    ?>
+        <div class="container">
+            <br>
+
             <div class="fichas">
                 <div class="row">
                     <?php while ($trimestre = mysqli_fetch_array($resultado)) : ?>
@@ -111,7 +107,7 @@
 				                        </svg></a>"; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>actualizar ficha :</strong></td>
+                                        <td><strong>actualizar ficha:</strong></td>
                                         <td><?php echo "<a href='updateficha.php?id=" . $trimestre['id'] . "' ><svg style='color:blue' xmlns='http://www.w3.org/2000/svg'  width='30' height='40' fill='currentColor' class='bi bi-box-arrow-in-right' viewBox='0 0 16 16'>
                                         <path fill-rule='evenodd' d='M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z'/>
                                         <path fill-rule='evenodd' d='M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z'/>
@@ -119,29 +115,35 @@
                                     </tr>
                                     <tr>
                                         <td><strong>eliminar ficha :</strong></td>
-                                        <td><?php echo "<a href='eliminar-fichas.php?id=" . $trimestre['id'] . "' class='btn btn-outline-danger' onclick='return confirmacion()'>Eliminar</a>"; ?></td>   
+                                        <td><?php echo "<a href='eliminar-fichas.php?id=" . $trimestre['id'] . "' class='btn btn-outline-danger' onclick='return confirmacion()'>Eliminar</a>"; ?></td>
                                     </tr>
                                 </tbody>
                             </table>
                             <br>
                         </div>
-                    <?php endwhile; ?>
+                    <?php endwhile;
+                    ?>
                 </div>
             </div>
 
         <?php
-        
+        if (empty($trimestre)) {
+            echo "<div class='alert alert-danger alert-dismissible'>";
+            echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+            echo "  <strong>Error!</strong> No se encontraron Registros";
+            echo "</div>";
         }
-        
+    }
+
         ?>
-    </div>
-    <script type="text/javascript" src='js/jquery.min.js'></script>
-    <script type="text/javascript" src='js/bootstrap.min.js'></script>
-    <script type="text/javascript">
-        function hola() {
-            $("#id").val("hola");
-        }
-    </script>
+        </div>
+        <script type="text/javascript" src='js/jquery.min.js'></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <script type="text/javascript">
+            function hola() {
+                $("#id").val("hola");
+            }
+        </script>
 </body>
 
 </html>

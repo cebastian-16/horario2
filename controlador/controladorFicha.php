@@ -96,4 +96,6 @@ class ficha
 			echo "</div>";
 		}
 	}
+
+	
 }

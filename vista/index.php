@@ -14,25 +14,28 @@
 <body>
 
 
-    <div class="container">
 
-        <?php
-        session_start();
-        if (isset($_POST['userLogin'])) {
-            header("Location: login.php");
-            exit();
-        } else {
-            include "Menu.php";
-            include '../controlador/controladorTri.php';
-            $trimestre = new trimestre;
+    <?php
+    session_start();
+    if (isset($_POST['userLogin'])) {
+        header("Location: login.php");
+        exit();
+    } else {
+        session_destroy();
+        include "Menu.php";
+        include '../controlador/controladorTri.php';
+        $trimestre = new trimestre;
 
-            $resultado = $trimestre->consultar();
-            $resultados = $trimestre->consulta();
-            $resultados3 = $trimestre->consultas();
-            $resultados4 = $trimestre->consultasT();
+        $resultado = $trimestre->consultar();
+        $resultados = $trimestre->consulta();
+        $resultados3 = $trimestre->consultas();
+        $resultados4 = $trimestre->consultasT();
 
 
-        ?><br>
+    ?> <div class="container">
+
+            <br>
+
             <div class="centrado">
 
                 <div class="row">
@@ -151,7 +154,7 @@
             </div>
 
         <?php
-        }
+    }
         ?>
 
 </body>

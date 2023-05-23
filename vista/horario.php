@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container">
+
 
         <?php
         session_start();
@@ -21,12 +21,12 @@
             header('Location: login.php');
             exit;
         } else {
+            session_destroy();
             include "Menu.php";
 
             include '../controlador/controladorHorario.php';
-            $horario = new horario;
-
-
+            $horario = new horario; 
+            
             if (!empty($_GET['id'])) {
                 $id = $_GET['id'];
                 $resultadoDato = $horario->consultarHorario($id);
@@ -43,16 +43,14 @@
 
         ?>
 
-            <div class="centrado">
+            <div class="container">
                 <?php if (empty($row)) { ?>
                     <div class="row">
-                        <a href="index.php">
-                            <input type='button' value='volver' class="btn btn-primary">
-                        </a>
+                        
                     </div>
                 <?php } ?>
                 <?php if (!empty($row)) { ?>
-                    <div class="col-md-4">
+                    <div class="centrado1">
                         <table class="table">
                             <tbody>
                                 <tr>

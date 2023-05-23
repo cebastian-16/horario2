@@ -1,15 +1,9 @@
 .centrado {
-  margin-left: 550px !important;
-  justify-content: center;
-  font-size: 100%;
-  justify-items: center;
+  margin-left: 400px !important;
 }
 
-.holas {
-  margin-left: 550px !important;
-  justify-content: center;
-  font-size: 100%;
-  justify-items: center;
+.centrado1 {
+  margin-top: 5px;
 }
 
 .session {
@@ -18,54 +12,45 @@
 
 .col-md-4 {
   margin-top: 1%;
-
 }
 
-.table-wrapper {
-  text-align: center;
+.hola {
+  display: flex;
+  margin-left: 17px !important;
+}
+
+.label {
+  margin-left: 450px !important;
   justify-content: center;
-  margin-left: 550px !important;
-  margin-top: 1%;
-  font-size: 100%;
+  width: 60%;
+  justify-items: center;
+}
+.label1 {
+  margin-top: 5px;
+  margin-left: 450px !important;
+  justify-content: center;
+  width: 60%;
+  justify-items: center;
 }
 
-
-.insert {
-  margin-left: 550px !important;
+.label3 {
+  margin-top: 5px;
+  margin-left: 450px !important;
   justify-content: center;
   width: 60%;
   justify-items: center;
 }
 
 
-/* .table-wrapper .btn {
-  float: right;
-  color: #333;
-  background-color: #fff;
-  border-radius: 3px;
-  border: none;
-  outline: none !important;
-  margin-left: 10px;
-
-  margin-top: 5%;
-} */
-
-.table-wrapper .btn:hover {
-  color: #333;
-  background: #f2f2f2;
-  margin-top: 5%;
-}
-
 .table-wrapper .btn.btn-primary {
   color: #fff;
   background: #03A9F4;
-  margin-top: 5%;
+  
 }
 
-.table-wrapper .btn.bt-primary {
+.table-wrapper .bt-primary {
   color: #fff;
   background: #03A9F4;
-  margin-top: 5%;
   margin-left: 120px !important;
 }
 
@@ -77,3 +62,21 @@
   text-align: center;
   border: 3px solid black;
 }
+
+.fichas{
+  margin-top: 1%;
+}
+
+.form-control {
+  margin-left: 450px ;
+}
+
+.modificar1{
+  margin-top: 1%;
+  margin-left: 450px !important;
+}
+.modificar2{
+  margin-top: 1%;
+  margin-left: 450px !important;
+}
+

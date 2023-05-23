@@ -12,93 +12,93 @@
 </head>
 
 <body>
-    <div class="container">
 
-        <?php
-        session_start();
+    <?php
+    session_start();
 
-        if (isset($_POST['userLogin'])) {
-            header('Location: login.php');
-            exit;
-        } else {
+    if (isset($_POST['userLogin'])) {
+        header('Location: login.php');
+        exit;
+    } else {
 
-            include "Menu.php";
-            include '../Controlador/controladorFicha.php';
-            $ficha = new ficha;
+        include "Menu.php";
+        include '../Controlador/controladorFicha.php';
+        $ficha = new ficha;
 
-
-            if (!empty($_GET['id'])) {
-                $id = $_GET['id'];
-                $resultadoficha = $ficha->mirarficha($id);
-                $consultaM = mysqli_fetch_array($resultadoficha);
-
-                if (empty($consultaM)) {
-                    echo "<div class='alert alert-danger alert-dismissible'>";
-                    echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-                    echo "  <strong>Error!</strong> No se encontraron Registros";
-                    echo "</div>";
-                }
-            }
-
-            if (!empty($_POST['boton'])) {
-                $accion = $_POST['boton'];
-                if ($accion == "Modificar") {
-                    $id = $_POST['id'];
-                    $hora_inicio = $_POST['hora_inicio'];
-                    $hora_final = $_POST['hora_final'];
-                    $documento = $_POST['documento'];
-                    $lider_ficha = $_POST['lider_ficha'];
-                    $id_trimestre  = $_POST['id_trimestre'];
-                    $modificarficha = $ficha->actualizarficha($id, $hora_inicio, $hora_final, $documento, $lider_ficha, $id_trimestre);
-                }
-            }
         ?>
+        <br>
+        <?php
+
+        if (!empty($_GET['id'])) {
+            $id = $_GET['id'];
+            $resultadoficha = $ficha->mirarficha($id);
+            $consultaM = mysqli_fetch_array($resultadoficha);
+
+            if (empty($consultaM)) {
+                echo "<div class='alert alert-danger alert-dismissible'>";
+                echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+                echo "  <strong>Error!</strong> No se encontraron Registros";
+                echo "</div>";
+            }
+        }
+
+        if (!empty($_POST['boton'])) {
+            $accion = $_POST['boton'];
+            if ($accion == "Modificar") {
+                $id = $_POST['id'];
+                $hora_inicio = $_POST['hora_inicio'];
+                $hora_final = $_POST['hora_final'];
+                $documento = $_POST['documento'];
+                $lider_ficha = $_POST['lider_ficha'];
+                $id_trimestre  = $_POST['id_trimestre'];
+                $modificarficha = $ficha->actualizarficha($id, $hora_inicio, $hora_final, $documento, $lider_ficha, $id_trimestre);
+            }
+        }
+    ?>
+        <div class="container">
 
             <?php if (!empty($consultaM)) { ?>
+
                 <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h2>Modificar Ficha</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div class="rows">
+
+                        <h2 class="label">Modificar Ficha</h2>
+
                         <form action="updateficha.php" method="post" name="formDatos" class="form">
-                            <div class="form-group col-md-4">
-                                <label>ficha </label>
+                            <div class="form-group col-md-4"> 
+                                <label class="label">ficha </label>
                                 <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["id"] . "' name='id' type='text'>" ?>
                                 <?php echo "<input class='form-control' disabled value='" . $consultaM["id"] . "' type='text'>" ?>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>nombre </label>
+                                <label class="label">nombre: </label>
                                 <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["nombre"] . "' name='nombre' type='text'>" ?>
                                 <?php echo "<input class='form-control' disabled value='" . $consultaM["nombre"] . "' type='text'>" ?>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>hora de inicio </label>
+                                <label class="label">hora de inicio: </label>
                                 <input type="time" name="hora_inicio" for="hora_inicio" value="<?php echo $consultaM["hora_inicio"] ?>" placeholder="hora_inicio" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>hora de salida </label>
+                                <label class="label">hora de salida: </label>
                                 <input type="time" name="hora_final" value="<?php echo $consultaM["hora_final"] ?>" for="hora_final" placeholder="" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>documento </label>
+                                <label class="label">documento: </label>
                                 <input type="text" name="documento" value="<?php echo $consultaM["documento"] ?>" for="documento" placeholder="documento" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>lider de ficha </label>
+                                <label class="label">lider de ficha: </label>
                                 <input type="text" name="lider_ficha" value="<?php echo $consultaM["lider_ficha"] ?>" for="lider_ficha" placeholder="lider de ficha" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label>trimestre</label>
+                                <label class="label">trimestre:</label>
                                 <select class="form-control" name="id_trimestre" for="id_trimestre" required>
                                     <option value="<?php echo $consultaM["id_trimestre"] ?>">Seleccione trimestre:</option>
                                     <option value="1">trimestre1</option>
@@ -108,32 +108,31 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-1">
+                            <div class="modificar1">
                                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
-                                
                             </div>
-                            
-                            <div class="form-group col-md-1">
-                                <?php echo "<a href='updatehorario.php?id=" . $consultaM["id"] . "'><input type='button' class='btn bt-primary' value='Modificar horario'></a> " ?>
+
+                            <div class="modificar2">
+                                <?php echo "<a href='updatehorario.php?id=" . $consultaM["id"] . "'><input type='button' class='btn btn-primary' value='Modificar horario'></a> " ?>
                             </div>
 
                         </form>
                     </div>
-                    
+
             <?php
             }
         }
             ?>
                 </div>
-    </div>
-    <script type="text/javascript" src='js/jquery.min.js'></script>
-    <script type="text/javascript" src='js/bootstrap.min.js'></script>
-    <script>
-        if ($("#nombre_equipo").val() != "") {
-            document.getElementById('divAdmin').classList.remove('deshabilitarDiv');
-            document.getElementById('divCheckbox').classList.add('deshabilitarDiv');
-        }
-    </script>
+        </div>
+        <script type="text/javascript" src='js/jquery.min.js'></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <script>
+            if ($("#nombre_equipo").val() != "") {
+                document.getElementById('divAdmin').classList.remove('deshabilitarDiv');
+                document.getElementById('divCheckbox').classList.add('deshabilitarDiv');
+            }
+        </script>
 </body>
 
 </html>

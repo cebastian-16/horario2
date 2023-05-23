@@ -12,93 +12,99 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php
-        session_start();
 
-        if (isset($_POST['userLogin'])) {
-            header('Location: login.php');
-            exit;
-        } else {
-            include "Menu.php";
-            include '../controlador/controladorHorario.php';
-            $horario = new horario;
+    <?php
+    session_start();
 
-            if (!empty($_GET['activo'])) {
-                $activo = $_GET['activo'];
-            }
-            if (!empty($_POST['boton'])) {
-                $accion = $_POST['boton'];
-                $id_ficha = null;
-                $activo = $_POST['activo'];
-                $lunes = $_POST['lunes'];
-                $martes = $_POST['martes'];
-                $miercoles = $_POST['miercoles'];
-                $jueves = $_POST['jueves'];
-                $viernes = $_POST['viernes'];
-                $sabado = $_POST['sabado'];
-                $domingo = $_POST['domingo'];
-
-                if ($accion == "Agregar") {
-                    $insertHorario = $horario->insertHorario($id_ficha, $activo, $lunes, $martes, $miercoles, $jueves, $viernes, $sabado, $domingo);
-                }
-            }
-            if (!empty($_GET['activo'])) {
+    if (isset($_POST['userLogin'])) {
+        header('Location: login.php');
+        exit;
+    } else {
+        session_destroy();
+        include "Menu.php";
+        include '../controlador/controladorHorario.php';
+        $horario = new horario;
 
         ?>
-                <div class="holas">
-                <h1> Crear Horario de la ficha</h1>
-                <form action="insert-horario.php" method="POST">
-                    <div class="form-group col-md-4">
-                        <label>lunes </label>
-                        <input type="text" name="lunes" for="lunes" value="" placeholder="lunes" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>martes </label>
-                        <input type="text" name="martes" value="" for="martes" placeholder="martes" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>miercoles </label>
-                        <input type="text" name="miercoles" value="" for="miercoles" placeholder="miercoles" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>jueves </label>
-                        <input type="text" name="jueves" value="" for="jueves" placeholder="jueves" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>viernes </label>
-                        <input type="text" name="viernes" for="viernes" value="" placeholder="viernes" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>sabados </label>
-                        <input type="text" name="sabado" value="" for="sabado" placeholder="sabado" class="form-control" >
-                    </div>
-                    <br>
-                    <div class="form-group col-md-4">
-                        <label>domingos </label>
-                        <input type="text" name="domingo" value="" for="domingo" placeholder="domingo" class="form-control" >
-                    </div>
-                    <br>
+        <br>
+        <?php
 
-                    <input type="hidden" name="activo" value="<?php echo $activo ?>">
+        if (!empty($_GET['activo'])) {
+            $activo = $_GET['activo'];
+        }
+        if (!empty($_POST['boton'])) {
+            $accion = $_POST['boton'];
+            $id_ficha = null;
+            $activo = $_POST['activo'];
+            $lunes = $_POST['lunes'];
+            $martes = $_POST['martes'];
+            $miercoles = $_POST['miercoles'];
+            $jueves = $_POST['jueves'];
+            $viernes = $_POST['viernes'];
+            $sabado = $_POST['sabado'];
+            $domingo = $_POST['domingo'];
 
-                    <div class="form-group col-md-2">
-                        <input type="submit" name="boton" value="Agregar" class="btn btn-primary">
-                    </div>
-                </form>
-                <!-- </div> -->
-    </div>
-<?php
+            if ($accion == "Agregar") {
+                $insertHorario = $horario->insertHorario($id_ficha, $activo, $lunes, $martes, $miercoles, $jueves, $viernes, $sabado, $domingo);
             }
         }
-?>
-<script type="text/javascript" src='js/jquery.min.js'></script>
-<script type="text/javascript" src='js/bootstrap.min.js'></script>
+        if (!empty($_GET['activo'])) {
+
+    ?>
+            <div class="container">
+                <div class="holas">
+                    <h1 class="label"> Crear Horario de la ficha</h1>
+                    <form action="insert-horario.php" method="POST">
+                        <div class="form-group col-md-4">
+                            <label class="label">lunes </label>
+                            <input type="text" name="lunes" for="lunes" value="" placeholder="lunes" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">martes </label>
+                            <input type="text" name="martes" value="" for="martes" placeholder="martes" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">miercoles </label>
+                            <input type="text" name="miercoles" value="" for="miercoles" placeholder="miercoles" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">jueves </label>
+                            <input type="text" name="jueves" value="" for="jueves" placeholder="jueves" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">viernes </label>
+                            <input type="text" name="viernes" for="viernes" value="" placeholder="viernes" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">sabados </label>
+                            <input type="text" name="sabado" value="" for="sabado" placeholder="sabado" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-4">
+                            <label class="label">domingos </label>
+                            <input type="text" name="domingo" value="" for="domingo" placeholder="domingo" class="form-control">
+                        </div>
+                        <br>
+
+                        <input type="hidden" name="activo" value="<?php echo $activo ?>">
+
+                        <div class="label">
+                            <input type="submit" name="boton" value="Agregar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <?php
+        }
+    }
+    ?>
+    <script type="text/javascript" src='js/jquery.min.js'></script>
+    <script type="text/javascript" src='js/bootstrap.min.js'></script>
 </body>
 
 </html>
