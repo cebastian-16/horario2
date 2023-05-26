@@ -53,7 +53,7 @@
         ?>
             <div class="container">
                 <div class="rows">
-                    <h1 class="label"> Crear Horario de la ficha</h1>
+                    <h1 class="text-center"> Crear Horario de la ficha</h1>
                     <form action="insert-horario.php" method="POST">
                         <div class="form-group col-md-4">
                             <label class="label">lunes </label>
