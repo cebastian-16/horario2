@@ -1,5 +1,6 @@
 .centrado {
   margin-left: 400px !important;
+  position: relative;
 }
 
 .centrado1 {
@@ -25,6 +26,7 @@
   width: 60%;
   justify-items: center;
 }
+
 .label1 {
   margin-top: 5px;
   margin-left: 450px !important;
@@ -35,7 +37,7 @@
 
 .label3 {
   margin-top: 5px;
-  margin-left: 450px !important;
+  margin-left: 440px !important;
   justify-content: center;
   width: 60%;
   justify-items: center;
@@ -45,7 +47,6 @@
 .table-wrapper .btn.btn-primary {
   color: #fff;
   background: #03A9F4;
-  
 }
 
 .table-wrapper .bt-primary {
@@ -68,15 +69,43 @@
 }
 
 .form-control {
-  margin-left: 450px ;
+ text-align: center;
+ position: relative;
 }
 
 .modificar1{
-  margin-top: 1%;
-  margin-left: 450px !important;
-}
-.modificar2{
-  margin-top: 1%;
-  margin-left: 450px !important;
+  margin-top: 2%;
+  margin-left: 390px !important;
+  display: inline-block;
+  position: relative;
 }
 
+.rows{ 
+  border: 3px solid rgb(241, 234, 234);
+  width: calc(100% - 80px);
+  position: relative;
+  top: 20px;
+  left: 50px;
+}
+
+div.col-md-4 {
+  width: 200px; /* Ajusta el ancho del div según tu preferencia */
+}
+
+div.col-md-4 input[type="text"] {
+  width: 515%; /* Los inputs ocuparán todo el ancho disponible dentro del div */
+  position: relative;
+}
+
+div.col-md-4 input[type="time"],
+div.col-md-4 select {
+  width: 515%; /* Los inputs y selects ocuparán todo el ancho disponible dentro del div */
+  position: relative;
+}
+
+div.col-md-4 label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}

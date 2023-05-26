@@ -14,14 +14,13 @@
 <body>
 
 
-
     <?php
     session_start();
-    if (isset($_POST['userLogin'])) {
-        header("Location: login.php");
-        exit();
-    } else {
-        session_destroy();
+    if (!isset($_SESSION)) {
+        header('Location: login.php');
+        exit;
+    } if(isset($_SESSION)) {
+
         include "Menu.php";
         include '../controlador/controladorTri.php';
         $trimestre = new trimestre;
@@ -40,7 +39,7 @@
 
                 <div class="row">
                     <?php $row = mysqli_fetch_array($resultado) ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <table class="table">
                             <tbody>
                                 <tr>
@@ -69,7 +68,7 @@
             <div class="centrado">
                 <div class="row">
                     <?php $row = mysqli_fetch_array($resultados) ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <table class="table">
                             <tbody>
                                 <tr>
@@ -98,7 +97,7 @@
             <div class="centrado">
                 <div class="row">
                     <?php $row = mysqli_fetch_array($resultados3) ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <table class="table">
                             <tbody>
                                 <tr>
@@ -127,7 +126,7 @@
             <div class="centrado">
                 <div class="row">
                     <?php $row = mysqli_fetch_array($resultados4) ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <table class="table">
                             <tbody>
                                 <tr>

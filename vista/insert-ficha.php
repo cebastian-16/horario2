@@ -15,16 +15,16 @@
 
     <?php
     session_start();
-
-    if (isset($_POST['userLogin'])) {
+    if (!isset($_SESSION)) {
         header('Location: login.php');
         exit;
-    } else {
+    }
+    if (isset($_SESSION)) {
         session_destroy();
         include "Menu.php";
         include '../Controlador/controladorFicha.php';
         $ficha = new ficha;
-        ?>
+    ?>
         <br>
         <?php
 
@@ -36,7 +36,7 @@
             $hora_final = $_POST['hora_final'];
             $id_centro = $_POST['id_centro'];
             $documento = $_POST['documento'];
-            $lider_ficha = $_POST['lider_ficha'];
+            $lider_ficha = $_POST['lider_ficha'];    
             $id_trimestre = $_POST['id_trimestre'];
             $id_municipio = $_POST['id_municipio'];
             $id_ambiente = $_POST['id_ambiente'];
@@ -46,9 +46,9 @@
             }
         }
 
-    ?>
+        ?>
         <div class="container">
-            <div class="users-form">
+            <div class="rows">
                 <form action="insert-ficha.php" method="POST" class="insert">
                     <h1 class="label"> Crear ficha</h1>
                     <div class="form-group col-md-4">

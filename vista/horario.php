@@ -15,12 +15,11 @@
 
 
         <?php
-        session_start();
-
-        if (isset($_POST['userLogin'])) {
-            header('Location: login.php');
-            exit;
-        } else {
+       session_start();
+       if (!isset($_SESSION)) {
+           header('Location: login.php');
+           exit;
+       } if(isset($_SESSION)) {
             session_destroy();
             include "Menu.php";
 

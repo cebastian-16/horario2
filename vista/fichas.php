@@ -33,10 +33,11 @@
 
     <?php
     session_start();
-    if (isset($_POST['userLogin'])) {
+    if (!isset($_SESSION)) {
         header('Location: login.php');
         exit;
-    } else {
+    }
+    if (isset($_SESSION)) {
         session_destroy();
         include "Menu.php";
         include '../controlador/fichas.php';
@@ -49,6 +50,7 @@
         }
 
 
+
     ?>
         <div class="container">
             <br>
@@ -57,7 +59,7 @@
                 <div class="row">
                     <?php while ($trimestre = mysqli_fetch_array($resultado)) : ?>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -114,7 +116,7 @@
                                         </svg></a>"; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>eliminar ficha :</strong></td>
+                                        <td><strong>eliminar ficha:</strong></td>
                                         <td><?php echo "<a href='eliminar-fichas.php?id=" . $trimestre['id'] . "' class='btn btn-outline-danger' onclick='return confirmacion()'>Eliminar</a>"; ?></td>
                                     </tr>
                                 </tbody>
@@ -125,14 +127,8 @@
                     ?>
                 </div>
             </div>
-
         <?php
-        if (empty($trimestre)) {
-            echo "<div class='alert alert-danger alert-dismissible'>";
-            echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-            echo "  <strong>Error!</strong> No se encontraron Registros";
-            echo "</div>";
-        }
+
     }
 
         ?>

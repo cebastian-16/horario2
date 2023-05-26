@@ -35,9 +35,10 @@ $resultadoFicha = $index->buscarficha($query);
 // Mostrar los resultados
 if ($resultadoFicha->num_rows > 0) {
     while ($trimestre = $resultadoFicha->fetch_assoc()) {
-        $fila = '<div class="fichas">';
+        $fila = '<div class="container">';
+        $fila .= '<div class="fichas">';
         $fila .= '<div class="row">';
-        $fila .=  '<div class="col-md-4">';
+        $fila .=  '<div class="col-md-6">';
         $fila .=            '<table class="table"  margin-top: 5%;">';
         $fila .=               '<tbody>';
         $fila .=            '<tr>';
@@ -104,11 +105,15 @@ if ($resultadoFicha->num_rows > 0) {
         $fila .=    '</div>';
         $fila .=    '</div>';
         $fila .=    '</div>';
+        $fila .=    '</div>';
 
         // Imprimir la tabla en HTML
         echo $fila;
     }
 } else {
-    echo '<p>No se encontraron resultados</p>';
+    echo "<div class='alert alert-danger alert-dismissible'>";
+    echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+    echo "  <strong>Error!</strong> No se encontraron Registros";
+    echo "</div>";
 }
 ?>

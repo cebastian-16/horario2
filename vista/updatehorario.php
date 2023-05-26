@@ -15,11 +15,10 @@
    
         <?php
         session_start();
-
-        if (isset($_POST['userLogin'])) {
-            header('Location: login.php');
-            exit;
-        } else {
+    if (!isset($_SESSION)) {
+        header('Location: login.php');
+        exit;
+    } if(isset($_SESSION)) {
             session_destroy();
             include "Menu.php";
             include '../controlador/controladorHorario.php';

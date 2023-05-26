@@ -15,17 +15,17 @@
 
     <?php
     session_start();
-
-    if (isset($_POST['userLogin'])) {
+    if (!isset($_SESSION)) {
         header('Location: login.php');
         exit;
-    } else {
+    }
+    if (isset($_SESSION)) {
         session_destroy();
         include "Menu.php";
         include '../controlador/controladorHorario.php';
         $horario = new horario;
 
-        ?>
+    ?>
         <br>
         <?php
 
@@ -50,9 +50,9 @@
         }
         if (!empty($_GET['activo'])) {
 
-    ?>
+        ?>
             <div class="container">
-                <div class="holas">
+                <div class="rows">
                     <h1 class="label"> Crear Horario de la ficha</h1>
                     <form action="insert-horario.php" method="POST">
                         <div class="form-group col-md-4">
